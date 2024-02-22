@@ -5,3 +5,4 @@ from .models import Product, ProductImage, Promotions, Category
 admin.site.register(Product)
 admin.site.register(ProductImage)
 admin.site.register(Category)
+admin.site.register(Promotions)
