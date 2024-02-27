@@ -1,0 +1,9 @@
+.product-block .hidden-child {
+  visibility: hidden;
+  opacity: 0;
+  /* transition: visibility 0.3s linear, opacity 0.3s linear; */
+}
+.product-block:hover .hidden-child {
+  visibility: visible;
+  opacity: 1;
+}

@@ -1,0 +1,76 @@
+{% extends "layouts/base.html" %} {% block content %}
+<div class="hidden">
+  {% block head_title %}
+      {% with head_title=data.category_title head_description=data.category_title %}
+          {{ block.super }}
+      {% endwith%}
+  {% endblock head_title %}
+  {% block category_wrapper %}
+      {% with categories=data.categories %}
+          {{ block.super }}
+      {% endwith%}
+  {% endblock category_wrapper %}
+  </div>
+
+<div>{% include "includes/breadscrumb.html" with br1="Danh mục sản phẩm" br2=data.category_title %}</div>
+
+<form class="max-w-sm pt-10">
+  <select
+    id="countries"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+  >
+    <option selected>Lọc kết quả ...</option>
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="FR">France</option>
+    <option value="DE">Germany</option>
+  </select>
+</form>
+
+<div class="pt-6 text-black-text animate-fade-left animate-once animate-duration-[2000ms]">
+  <div class="grid grid-cols-4">
+    {% for item in data.products %}
+    <div class="product-block w-[261px] py-4 hover:cursor-pointer">
+      <a href="/san-pham/{{item.slug}}">
+        <img
+          src="{{item.image}}"
+          alt="..."
+          class="h-[261px] object-fill mb-3"
+        />
+        <div class="transition-all delay-300 flex flex-col text-center text-wrap">
+          <span class="uppercase text-[18px]">{{item.name}}</span>
+          <div class="py-6">
+            <a
+              href="/san-pham/{{item.slug}}"
+              class="hidden-child animate-fade-up animate-once rounded-[20px] font-[600] text-[15px] px-5 py-3 hover:cursor-pointer text-[#00ce1b] bg-[#e9e6ed] hover:bg-[#00ce1b] hover:text-white"
+              >Đọc tiếp</a
+            >
+          </div>
+        </div></a
+      >
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!--Paging-->
+<div class="mt-[-20px]">{% include "includes/paging.html" with page_obj=data.page_obj %}</div>
+
+<div class="text-[#5D5D5D]">
+  <div class="w-full flex justify-center pt-8 text-black-text">
+    <h2 class="text-[30px] text-[#5D5D5D] py-4">SẢN PHẨM LIÊN QUAN</h2>
+  </div>
+  <div class="px-[80px] grid grid-cols-4 gap-4">
+    {% for item in data.related_categories %}
+    <div>
+      <a href="/danh-muc-san-pham/{{item.slug}}">
+        <img src="{{item.photo_url}}" alt="..." class="h-[194px] w-[291px] object-fill mb-3" />
+        <div class="flex flex-col text-center text-wrap">
+          <span class="uppercase text-[18px]">{{item.title}}</span>
+        </div>
+      </a>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
