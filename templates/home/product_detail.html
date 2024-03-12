@@ -15,8 +15,8 @@
 <div>{% include "includes/breadscrumb.html" with br1="Sản phẩm" br2=data.name %}</div>
 
 <div class="py-10 text-black-text animate-fade-up animate-once">
-  <div class="flex flex-row w-full">
-    <div class="border-r-[3px] border-[#dcdcdc] w-[60%] py-[10px] px-[20px]">
+  <div class="flex lg:flex-row sm:flex-col w-full">
+    <div class="border-r-[3px] border-[#dcdcdc] sm:w-full lg:w-[60%] py-[10px] px-[20px]">
       <div id="controls-carousel" class="relative w-full" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
@@ -98,28 +98,28 @@
         </button>
       </div>
     </div>
-    <div class="py-[10px] px-[20px] w-[40%]">
-      <h4 class="uppercase text-[24px] font-bold">{{data.name}}</h4>
-      <div class="text-[20px]">{{data.short_description|safe}}</div>
+    <div class="py-[10px] px-[20px] md:w-full lg:w-[40%]">
+      <h4 class="uppercase sm:text-[18px] lg:text-[24px] font-bold">{{data.name}}</h4>
+      <div class="sm:text-[16px] md:text-[20px]">{{data.short_description|safe}}</div>
     </div>
   </div>
   <div class="py-10">
-    <div class="text-[20px]">{{data.description|safe}}</div>
+    <div class="sm:text-[16px] md:text-[20px]">{{data.description|safe}}</div>
   </div>
 </div>
 {% if data.related_products|length > 0 %}
-<h3 class="text-[30px]">SẢN PHẨM TƯƠNG TỰ</h3>
-<div class="flex flex-row gap-2">
+<h3 class="sm:text-[24px] lg:text-[30px] flex w-full justify-center">SẢN PHẨM TƯƠNG TỰ</h3>
+<div class="flex flex-wrap justify-center gap-4 w-full">
   {% for item in data.related_products %}
-  <div class="w-[280px] py-4">
+  <div class="sm:w-[180px] lg:w-[240px] py-4">
     <a href="/san-pham/{{item.slug}}">
-      <img src="{{item.image}}" alt="..." class="h-[280px] object-fill mb-3" />
+      <img src="{{item.image}}" alt="..." class="sm:h-[180px] lg:h-[240px] object-fill mb-3" />
       <div class="flex flex-col text-center text-wrap">
-        <span class="uppercase text-[18px]">{{item.name}}</span>
-        <div class="py-6">
+        <span class="uppercase sm:text-[12px] lg:text-[18px]">{{item.name}}</span>
+        <div class="sm:py-4 md:py-6">
           <a
             href="/san-pham/{{item.slug}}"
-            class="text-[#00ce1b] rounded-[6px] w-[100px] font-[800] text-[18px] py-3 px-5 hover:cursor-pointer hover:bg-[#00ce1b] hover:text-white"
+            class="text-[#00ce1b] rounded-[6px] font-[800] sm:text-[14px] md:text-[18px] py-3 px-5 hover:cursor-pointer hover:bg-[#00ce1b] hover:text-white"
             >Đọc tiếp</a
           >
         </div>

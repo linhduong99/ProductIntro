@@ -5,6 +5,14 @@ module.exports = {
     fontFamily: {
       roboto: ["Roboto", "sans-serif"],
     },
+    screens: {
+      sm: "320px",
+      sm2: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      xl2: "1280px",
+    },
     extend: {
       colors: {
         "black-text": "#333",

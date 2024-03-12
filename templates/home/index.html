@@ -1,29 +1,32 @@
 {% extends "layouts/base.html" %} {% block content %}
 <div class="hidden">
-{% block category_wrapper %}
-    {% with categories=data.categories %}
-        {{ block.super }}
-    {% endwith%}
-{% endblock category_wrapper %}
+  {% block category_wrapper %} 
+    {% with categories=data.categories %} 
+     {{ block.super }} 
+    {% endwith%} 
+  {% endblock category_wrapper %}
 </div>
 
-
 <!--promotions -->
-<div id="default-carousel" class="relative w-full z-[1]" data-carousel="slide">
+<div id="default-carousel" class="relative z-[1]" data-carousel="slide">
   <!-- Carousel wrapper -->
-  <div class="relative h-[600px] overflow-hidden rounded-lg">
+  <div
+    class="relative sm:h-[215px] sm2:h-[300px] lg:h-[600px] overflow-hidden rounded-lg"
+  >
     {% for item in data.promotions %}
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
       <img
         src="{{item.photo_url}}"
-        class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+        class="absolute block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="..."
       />
     </div>
     {% endfor %}
   </div>
   <!-- Slider indicators -->
-  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+  <div
+    class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse"
+  >
     {% for item in data.promotions %}
     <button
       type="button"
@@ -50,7 +53,13 @@
         fill="none"
         viewBox="0 0 6 10"
       >
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 1 1 5l4 4"
+        />
       </svg>
       <span class="sr-only">Previous</span>
     </span>
@@ -70,22 +79,36 @@
         fill="none"
         viewBox="0 0 6 10"
       >
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 9 4-4-4-4"
+        />
       </svg>
       <span class="sr-only">Next</span>
     </span>
   </button>
 </div>
 <!--Categories-->
-<div class="text-black-text">
-  <h3 class="py-4 flex justify-center text-[28px] font-[600]">DANH MỤC SẢN PHẨM</h3>
-  <div class="flex gap-2 justify-center">
+<div class="text-black-text w-[calc(100%-20px)] pt-4 pb-8">
+  <h3 class="py-4 flex justify-center sm:text-[22px] md:text-[28px] font-[600]">
+    DANH MỤC SẢN PHẨM
+  </h3>
+  <div class="flex gap-2 md:justify-center overflow-auto">
     {% for item in data.categories %}
     <a href="danh-muc-san-pham/{{item.slug}}" class="">
-      <img src="{{item.photo_url}}" alt="..." class="w-[190px] h-[190px] border object-fill mb-3" />
-      <div class="flex text-center font-[600]">
-        <span class="uppercase w-[190px] text-wrap text-[18px] text-[#0C9E1C]"
-          >{{item.title}}<span class="text-[18px] text-black"> ({{item.num_of_product}})</span></span
+      <img
+        src="{{item.photo_url}}"
+        alt="..."
+        class="md:w-[190px] md:h-[190px] sm:w-[120px] sm:h-[120px] border object-fill mb-3"
+      />
+      <div class="flex text-center font-[600] sm:text-[12px] md:text-[18px]">
+        <span class="uppercase sm:w-[120px] md:w-[190px] text-wrap  text-[#0C9E1C]"
+          >{{item.title}}<span class="text-black">
+            ({{item.num_of_product}})</span
+          ></span
         >
         <!--<a
         href="#"
@@ -99,19 +122,27 @@
 </div>
 
 <!--Product-->
-<div class="text-black-text animate-fade-left animate-once animate-duration-[2000ms]">
-  <div class="py-4 flex justify-center text-[28px] font-[600]">SẢN PHẨM TIÊU BIỂU</div>
-  <div class="grid grid-cols-4">
+<div
+  class="text-black-text animate-fade-left animate-once animate-duration-[2000ms]"
+>
+  <div class="pt-4 pb-2 flex justify-center sm:text-[22px] md:text-[28px] font-[600]">
+    SẢN PHẨM TIÊU BIỂU
+  </div>
+  <div class="gap-4 grid lg:grid-cols-4 sm:grid-cols-2 sm2:grid-cols-3">
     {% for item in data.products %}
-    <div class="w-[280px] py-4">
+    <div class="sm:w-[187px] lg:w-[280px] py-4">
       <a href="/san-pham/{{item.slug}}">
-        <img src="{{item.image}}" alt="..." class="h-[280px] object-fill mb-3" />
+        <img
+          src="{{item.image}}"
+          alt="..."
+          class="sm:h-[187px] lg:h-[280px] object-fill mb-3"
+        />
         <div class="flex flex-col text-center text-wrap">
-          <span class="uppercase text-[18px]">{{item.name}}</span>
+          <span class="uppercase sm:text-[12px] md:text-[18px]">{{item.name}}</span>
           <div class="py-6">
             <a
               href="/san-pham/{{item.slug}}"
-              class="text-[#0C9E1C] rounded-[6px] w-[100px] font-[800] text-[18px] py-3 px-5 hover:cursor-pointer hover:bg-[#0C9E1C] hover:text-white"
+              class="text-[#0C9E1C] rounded-[6px] w-[100px] font-[800] sm:text-[14px] md:text-[18px] py-3 px-5 hover:cursor-pointer hover:bg-[#0C9E1C] hover:text-white"
               >Đọc tiếp</a
             >
           </div>
