@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="{% static '/images/favicon.ico' %}">
+    <link rel="canonical" href="https://watesyong.vn{{request.get_full_path}}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     {% block head_title %} {% if head_title %}
     <title>{{head_title}}</title>
     <meta name="description" content="{{head_description}}" />
@@ -15,11 +17,11 @@
     <meta property="og:title" content="{{head_title}}" />
     {% else %}
     <title>Watesyong</title>
+    <meta name="description" content="Công ty TNHH truyền thông Higo chúng tôi chuyên các sản phẩm Đồ dùng đời sống & gia đình, như: Dầu gội thảo dược, an toàn lành tính, thành phần thiên nhiên, gừng tươi, trắc bách diệp, hà thủ ô, kỷ tử, đương quy, hữu cơ, 5 in 1, viên giặt sắc màu" />
     <meta property="og:site_name" content="Watesyong" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Watesyong" />
     {% endif%} {% endblock %} {% compress css %}
-
     <link rel="stylesheet" href="{% static 'src/output.css' %}" />
     <link rel="stylesheet" href="{% static 'custom.css' %}" />
     {% endcompress %}

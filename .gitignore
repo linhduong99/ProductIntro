@@ -50,8 +50,8 @@ Thumbs.db
 
 #####=== Custom ===#####
 # Directories:
-media/
-*media/
+media
+*media
 init_json
 learning_data
 /static/
@@ -67,3 +67,4 @@ deploy/
 *.local
 *local_*
 local
+db.qslite3
