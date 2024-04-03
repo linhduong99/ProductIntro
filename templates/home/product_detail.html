@@ -25,8 +25,9 @@
           <div class="hidden duration-700 ease-in-out" data-carousel-item>
             <img
               src="{{item}}"
-              class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              class="absolute hover:cursor-pointer object-contain block -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
               alt="..."
+              onclick="onClickViewFullSize(this)"
             />
           </div>
           {% endfor %}
@@ -128,4 +129,16 @@
   </div>
   {% endfor %}
 </div>
+<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+  <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+  <div class="w3-modal-content w3-animate-zoom">
+    <img id="img01" style="width:100%">
+  </div>
+</div>
+<script>
+  function onClickViewFullSize(element) {
+    document.getElementById("img01").src = element.src;
+    document.getElementById("modal01").style.display = "block";
+  }
+  </script>
 {% endif %} {% endblock content %}

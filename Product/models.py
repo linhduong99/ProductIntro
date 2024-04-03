@@ -15,6 +15,7 @@ class Category(models.Model):
     image = models.ImageField(upload_to="media/categories")
     status = models.CharField(max_length=16, default=settings.COMMON_STATUS_PUBLISH,
                               choices=settings.COMMON_STATUS_CHOICES, verbose_name='status')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='updated time')
     
     def get_unique_slug(self):
         if self.title is None:
@@ -27,6 +28,9 @@ class Category(models.Model):
             num += 1
         return unique_slug
 
+    def get_absolute_url(self):
+        return f"/danh-muc-san-pham/{self.slug}"
+    
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = self.get_unique_slug()
@@ -45,6 +49,7 @@ class Product(models.Model):
     categories = models.ManyToManyField(Category)
     status = models.CharField(max_length=16, default=settings.COMMON_STATUS_PUBLISH,
                               choices=settings.COMMON_STATUS_CHOICES, verbose_name='status')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='updated time')
     
     def get_unique_slug(self):
         if self.name is None:
@@ -56,6 +61,9 @@ class Product(models.Model):
             unique_slug = '{}-{}'.format(slug, num)
             num += 1
         return unique_slug
+    
+    def get_absolute_url(self):
+        return f"/san-pham/{self.slug}"
 
     def save(self, *args, **kwargs):
         if not self.slug:

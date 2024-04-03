@@ -67,3 +67,4 @@ deploy/
 *.local
 *local_*
 local
+db.qslite3

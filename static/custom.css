@@ -7,3 +7,8 @@
   visibility: visible;
   opacity: 1;
 }
+
+.cursor-zoom-in {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+}
